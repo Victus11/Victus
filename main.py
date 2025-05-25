@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Point d'entrée principal de l'application VICTUS Chat
 """
@@ -13,7 +14,7 @@ from fastapi import FastAPI
 import uvicorn
 
 # Chargement des variables d'environnement
-load_dotenv()
+load_dotenv(encoding='utf-8')
 
 def setup_app():
     """Configure et initialise l'application"""
@@ -56,6 +57,11 @@ def start_api():
     return app
 
 if __name__ == "__main__":
+    # Configuration de l'encodage par défaut
+    import sys
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
+    
     parser = argparse.ArgumentParser(description="VICTUS Chat System")
     parser.add_argument(
         "--mode",
